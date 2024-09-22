@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: ['https://loma-booking-frontend.vercel.app', 'http://localhost:3000'], // Array of allowed origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  credentials: true
 }));
 
 app.use(json());
