@@ -8,6 +8,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'https://loma-booking-frontend.vercel.app'); //หรือใส่แค่เฉพาะ domain ที่ต้องการได้
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
+
 app.use(cors({
   origin: ['https://loma-booking-frontend.vercel.app', 'http://localhost:3000'], // Array of allowed origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
