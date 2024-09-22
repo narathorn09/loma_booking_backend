@@ -9,7 +9,10 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(json());
 
-// Use user routes
+app.get("/", (req, res) => {
+  res.send("Hello from Express.js server!!");
+});
+
 app.use('/api', userRoutes); 
 
 // Start the server
