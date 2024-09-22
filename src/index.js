@@ -1,21 +1,21 @@
 import express from 'express';
-import pkg from 'body-parser';
 import cors from 'cors'; // Import CORS
 import userRoutes from './routes/userRoutes.js';
 
-const { json } = pkg;
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: ['https://loma-booking-frontend.vercel.app', 'http://localhost:3000'], // Array of allowed origins
+  origin: ['https://loma-booking-frontend.vercel.app', 'http://localhost:3000'], // Allowed origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-  headers: 'application/json',
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+  credentials: true, // Allow cookies and credentials
+  preflightContinue: false // Automatically handle OPTIONS requests
 }));
 
-app.use(json());
+// Use built-in express.json middleware for parsing JSON request bodies
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello from Express.js server!!");
