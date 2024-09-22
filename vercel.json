@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "framework": "node",
     "builds": [
       {
         "src": "src/index.js",
@@ -9,8 +8,8 @@
     ],
     "routes": [
       {
-        "src": "/src/(.*)",
-        "dest": "/src/index.js"
+        "src": "/(.*)",
+        "dest": "src/index.js"
       }
     ]
   }
